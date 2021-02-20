@@ -97,6 +97,11 @@ button[disabled] {
   float: right;
 }
 
+#dialog {
+  color: white;
+  background-color: black;
+}
+
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
