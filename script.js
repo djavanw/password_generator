@@ -1,5 +1,5 @@
 var daRandom = {
-  lowwer: ['a','b','c','d','e','f','h','i','j'],
+  lowwer: ['a','b','c','d','e','f','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
   upper: ['K','L','M','N','O','P','Q','R'],
   numbers: [0,1,2,3,4,5,6,7,8,9],
   charspec: ['!','@','#','$','%','/','&','*']
@@ -31,10 +31,15 @@ var quest3;
 var quest4;
 var quest5;
 var quest6;
-var mnray = [];
+var mnray = [];  //This is the empty array that will hold the selected combined arrays for the generated random password.
 
-var lowwer = ['a','b','c','d','e','f','h','i','j'];
-var upper = ['K','L','M','N','O','P','Q','R'];
+var i;   //This for the loop to make one array in the 
+
+
+
+
+var lowwer = ['a','b','c','d','e','f','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var upper = ['A','B','C,','D','K','L','M','N','O','P','Q','R'];
 var numbers = [0,1,2,3,4,5,6,7,8,9];
 var charspec = ['!','@','#','$','%','/','&','*'];
 
@@ -43,10 +48,6 @@ var msg = 'Password must be between 8 and 128 characters.';
 var msg2 = 'You must select atleast 1 criteria.';
 var msg1 = 'Click Generate Password when you are ready.';
 var msg3 = 'You must select a number.';
-
-// if (quest1 == 'yes') { 
-//   document.getElementById('dialog').innerHTML = 'The process will start';
-// } else {return};
 
 
     
@@ -59,7 +60,7 @@ function genpw() {
 
 
   quest2 = prompt('How many characters in the password?');
-    if ((quest2 <8) || (quest2 >=128)) {
+    if ((quest2 <8) || (quest2 >128)) {
       document.getElementById('dialog').innerHTML = msg; return;
     } else if (isNaN(quest2)) {
     document.getElementById('dialog').innerHTML = msg3; return;
@@ -70,7 +71,7 @@ function genpw() {
 
   quest3 = confirm('Include lowercase letters?');
   if (quest3 ==true) {
-  mnray = [].concat(lowwer);
+  for (i = 0; i < daRandom.lowwer.length; i++) {mnray.push(daRandom.lowwer[i])};
   } else {
     quest3 = quest3;
   }
@@ -78,8 +79,7 @@ function genpw() {
 
   quest4 = confirm('Include uppercase letters?');
   if (quest4 ==true) {
-
-    mnray = [].concat(upper);
+  for (i = 0; i < upper.length; i++) {mnray.push(upper[i])};
   } else {
   quest4 = quest4;
   }
@@ -87,32 +87,24 @@ function genpw() {
 
   quest5 = confirm('Include numbers?');
   if (quest5 ==true) {
-
-    mnray = [].concat(numbers);
+  for (i = 0; i < numbers.length; i++) {mnray.push(numbers[i])};
   } else {
   quest5 = quest5;
   }
 
-
   quest6 = confirm('Include special characters?');
   if (quest6 ==true) {
-  mnray = [].concat(charspec);
+  for (i = 0; i < charspec.length; i++) {mnray.push(charspec[i])};  
   } else {
   quest6 = quest6;
   }
 
-  if (quest3, quest4, quest5, quest6)
-
     if (
       (quest3 == false && quest4 == false) &&
-      (quest5 == false && quest6 == false)
+      (quest5 == false && quest6 == false)             //This validate the user selects atleast one criteria.
     ) {   
       document.getElementById('dialog').innerHTML = msg2; return;
     }
-
-  if (quest3 == true, quest4 ==true, quest5 ==true, quest6 ==true) {
-    
-  }
 
 };
 
