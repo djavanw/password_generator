@@ -38,12 +38,12 @@ var pick = 0;    //This represents how many criteria are selected.
 var dadivr;
 var nwlray;
 var j;
-
 var newLowwer = [];
+var pwdAdjust;
+var k;
+var reallyNew = [];
 
 var i;   //This for the loop to make one array in the 
-
-var pswdnum = ' ';
 
 var msg = 'Password must be between 8 and 128 characters.';   //** Responses to user wrong selections **/
 var msg1 = 'Click Generate Password when you are ready.';
@@ -137,17 +137,22 @@ if (quest6 ==true) {
   newLowwer.push(daRandom.charspec[nwlray])};
 }
 
+
+
+if (newLowwer != quest2) {                            //The block will adjust the password difference due to Math.floor rounding
+  // newLowwer = reallyNew;
+  pwdAdjust = newLowwer.length - quest2;
+  for (k = 0; k < pwdAdjust; k++) {newLowwer.pop()};
+  console.log (newLowwer.length);
+  console.log (quest2);
+
+
+newLowwer.sort(function(a,b){return 0.5 - Math.random()});  // Found code example on https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort_random
 newLowwer.sort(function(a,b){return 0.5 - Math.random()});
 document.getElementById('password').innerHTML = newLowwer;
 
 
-
-
-
-
-
-
-
+}
 
 
 // {newLowwer.push(daRandom.lowwer[j])};
@@ -159,6 +164,11 @@ document.getElementById('password').innerHTML = newLowwer;
 
 // genpw();
 generate.addEventListener("click", genpw);
+
+
+
+
+
 
 /****************This is the starter code ****************** 
 // Assignment Code
