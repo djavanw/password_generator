@@ -19,7 +19,7 @@ function genpw() {
   var quest5;
   var quest6;
 
-  var mnray = [];  //This is the empty array that will hold the selected combined arrays for the generated random password.
+  //var mnray = [];  //This is the empty array that will hold the selected combined arrays for the generated random password.
 
   var pick = 0;    //This represents count of how many criteria are selected.
   var dadivr = 0;
@@ -30,7 +30,7 @@ function genpw() {
   var k;
   // var reallyNew = [];
 
-var i;   //This for the loop to make one array in the 
+  //var i;   //This for the loop to make one array in the 
 
   // document.getElementById('password').innerHTML = ' ';  //This clears out the password area
   // quest1 = confirm('Would you like to generate a password?');
