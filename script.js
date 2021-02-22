@@ -23,7 +23,7 @@ function genpw() {
 
   var pick = 0;    //This represents count of how many criteria are selected.
   var dadivr = 0;
-  // var nwlray;
+  var nwlray;
   var j;
   var newPswd = [];
   var pwdAdjust;
