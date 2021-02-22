@@ -3,11 +3,15 @@
 ## Description
 This application is structured with HTML and styled with CSS to present a user with the ability to generate a secure password.  JavaScript is implemented to allow the user to generate and customize a secure password with lowercase, uppercase, numeric, and/or select special characters.  Atleast one of these criteria must be selected when the password is customized.  The generated password will have a minumum of 8 characters and no more than 128 characters.  The application is capabile of displaying on varied screen sizes.   
 
-## Screenshot of webpage
+## Screenshots of webpage
 
-![](./assets)
+![Initial Start Screen](./assets/images/password_gen_start.jpeg)
 
-![](./assets)
+![Dialog for incorrect input](./assets/images/password_gen_dialog_incorrect_input.jpeg)
+
+![User input prompt](./assets/images/password_gen_user_input1.png)
+
+![Generating new password](./assets/images/password_gen_new_password.jpeg)
 
 ## Webpage URL
 

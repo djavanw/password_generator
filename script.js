@@ -127,9 +127,9 @@ console.log(dadivr);                                //Used to troubleshoot
   }
 console.log(newPswd);                                     //Used to troubleshoot
 newPswd.sort(function(a,b){return 0.5 - Math.random()});  //This is so it does not delete the last criteria selection only.
-  console.log(newPswd);                                   //Used to troubleshoot
+console.log(newPswd);                                     //Used to troubleshoot
 newPswd.sort(function(a,b){return 0.5 - Math.random()});
-  console.log(newPswd);                                   //Used to troubleshoot
+console.log(newPswd);                                     //Used to troubleshoot
 
   if (newPswd != quest2) {                                //The block will adjust the password difference due to Math.floor rounding
     pwdAdjust = newPswd.length - quest2;
