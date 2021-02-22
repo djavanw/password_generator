@@ -7,11 +7,11 @@ This application is structured with HTML and styled with CSS to present a user w
 
 ![Initial Start Screen](./assets/images/password_gen_start.jpeg)
 
-![Dialog for incorrect input](./assets/images/password_gen_dialog_incorrect_input.jpeg)
+![Dialog to user for incorrect input](./assets/images/password_gen_dialog_incorrect_input.jpeg)
 
 ![User input prompt](./assets/images/password_gen_user_input1.png)
 
-![Generating new password](./assets/images/password_gen_new_password.jpeg)
+![Generating new password](./assets/images/password_gen_75_characters.jpeg)
 
 ## Webpage URL
 

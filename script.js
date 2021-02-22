@@ -24,28 +24,21 @@ function genpw() {
   var pick = 0;    //This represents count of how many criteria are selected.
   var dadivr = 0;
   var nwlray;
-  var j;
+  // var j;
   var newPswd = [];
   var pwdAdjust;
   var k;
-  // var reallyNew = [];
-
-  //var i;   //This for the loop to make one array in the 
-
-  // document.getElementById('password').innerHTML = ' ';  //This clears out the password area
-  // quest1 = confirm('Would you like to generate a password?');
-  // if (!quest1) {
-  //   document.getElementById('dialog').innerHTML = msg3; return;
-  // } 
-
+  var i, rand, temp = [];
+  var x;           //This is for the loop nmlray and the push into the new array.  It keeps the number within the range of the selected array. 
+  
   quest2 = prompt('How many characters in the password?');
-    if ((quest2 <8) || (quest2 >128)) {
-      document.getElementById('dialog').innerHTML = msg; return;
-    } else if (isNaN(quest2)) {
-    document.getElementById('dialog').innerHTML = msg1; return;
-    } else {
-      quest2 = quest2;
-    }
+  if ((quest2 <8) || (quest2 >128)) {
+    document.getElementById('dialog').innerHTML = msg; return;
+  } else if (isNaN(quest2)) {
+  document.getElementById('dialog').innerHTML = msg1; return;
+  } else {
+    quest2 = quest2;
+  }
 
   quest3 = confirm('Include lowercase letters?');
   // if (quest3 ==true) {
@@ -100,51 +93,131 @@ function genpw() {
   if (quest6 ==true) {pick++;};  
   dadivr = Math.ceil(quest2 / pick);
 
-console.log(dadivr);                                //Used to troubleshoot
-
-  if (quest3 ==true) {
-    for (j = 0; j < dadivr; j++) {
-    nwlray = [Math.floor(Math.random() * daRandom.lowwer.length)];
-    newPswd.push(daRandom.lowwer[nwlray])};
+console.log(dadivr);                                //Used to debug
+  
+  if (quest3 ==true) {                              
+    for(i = 0; i < daRandom.lowwer.length; i++) {   
+      rand = Math.floor(Math.random() * daRandom.lowwer.length);   //Found a better way to randomize the array  https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array#:~:text=The%20de%2Dfacto%20unbiased%20shuffle,Yates%20(aka%20Knuth)%20Shuffle.&text=function%20shuffle(array)%20%7B%20var,while%20(0%20!%3D%3D
+      temp = daRandom.lowwer[i];
+      daRandom.lowwer[i] = daRandom.lowwer[rand];
+      daRandom.lowwer[rand] = temp;
+    }
   }
+
+  console.log(daRandom.lowwer);                     //Used to debug
+
+    for(x = 0; x < dadivr; x++) {
+      nwlray = [Math.floor(Math.random() * daRandom.lowwer.length)];  //This must be used because dadivr can be a number higher that the numbers in the array.
+      temp = daRandom.lowwer[nwlray];
+      daRandom.lowwer[nwlray] = daRandom.lowwer[nwlray];
+      daRandom.lowwer[nwlray] = temp;
+      newPswd.push(daRandom.lowwer[nwlray]);  
+    }
+
+console.log(daRandom.lowwer);                       //Used to debug
+console.log(newPswd);
+
+  //   for (j = 0; j < dadivr; j++) {
+  //   nwlray = [Math.floor(Math.random() * daRandom.lowwer.length)];
+  //   newPswd.push(daRandom.lowwer[nwlray])};
+  // }
 
   if (quest4 ==true) {
-    for (j = 0; j < dadivr; j++) {
-    nwlray = [Math.floor(Math.random() * daRandom.upper.length)];
-    newPswd.push(daRandom.upper[nwlray])};
+    for(i = 0; i < daRandom.upper.length; i++) 
+    {
+      rand = Math.floor(Math.random() * daRandom.upper.length)
+      temp = daRandom.upper[i]
+      daRandom.upper[i] = daRandom.upper[rand]
+      daRandom.upper[rand] = temp
+    }
   }
+    for(x = 0; x < dadivr; x++) {
+    nwlray = [Math.floor(Math.random() * daRandom.upper.length)];   //This will only select a random number within the array.
+    temp = daRandom.upper[nwlray];
+    daRandom.upper[nwlray] = daRandom.upper[nwlray];
+    daRandom.upper[nwlray] = temp;
+    newPswd.push(daRandom.upper[nwlray]);  
+    }
+
+  // {
+  //   for (j = 0; j < dadivr; j++) {
+  //   nwlray = [Math.floor(Math.random() * daRandom.upper.length)];
+  //   newPswd.push(daRandom.upper[nwlray])};
+  // }
+
+// console.log(nwlray);
 
   if (quest5 ==true) {
-    for (j = 0; j < dadivr; j++) {
-    nwlray = [Math.floor(Math.random() * daRandom.numbers.length)];
-    newPswd.push(daRandom.numbers[nwlray])};
+    for(i = 0; i < daRandom.numbers.length; i++) 
+    {
+      rand = Math.floor(Math.random() * daRandom.numbers.length)
+      temp = daRandom.numbers[i]
+      daRandom.numbers[i] = daRandom.numbers[rand]
+      daRandom.numbers[rand] = temp
+    }
   }
+    for(x = 0; x < dadivr; x++) {
+    nwlray = [Math.floor(Math.random() * daRandom.numbers.length)];   //This will only select a random number within the array.
+    temp = daRandom.numbers[nwlray];
+    daRandom.numbers[nwlray] = daRandom.numbers[nwlray];
+    daRandom.numbers[nwlray] = temp;
+    newPswd.push(daRandom.numbers[nwlray]);  
+    }
+    
+  // {
+  //   for (j = 0; j < dadivr; j++) {
+  //   nwlray = [Math.floor(Math.random() * daRandom.numbers.length)];
+  //   newPswd.push(daRandom.numbers[nwlray])};
+  // }
 
   if (quest6 ==true) {
-    for (j = 0; j < dadivr; j++) {
-    nwlray = [Math.floor(Math.random() * daRandom.charspec.length)];
-    newPswd.push(daRandom.charspec[nwlray])};
+    for(i = 0; i < daRandom.charspec.length; i++) 
+    {
+      rand = Math.floor(Math.random() * daRandom.charspec.length)
+      temp = daRandom.charspec[i]
+      daRandom.charspec[i] = daRandom.charspec[rand]
+      daRandom.charspec[rand] = temp
+    }
   }
-console.log(newPswd);                                     //Used to troubleshoot
-newPswd.sort(function(a,b){return 0.5 - Math.random()});  //This is so it does not delete the last criteria selection only.
-console.log(newPswd);                                     //Used to troubleshoot
-newPswd.sort(function(a,b){return 0.5 - Math.random()});
-console.log(newPswd);                                     //Used to troubleshoot
+    for(x = 0; x < dadivr; x++) {
+    nwlray = [Math.floor(Math.random() * daRandom.charspec.length)];    //This will only select a random number within the array.
+    temp = daRandom.charspec[nwlray];
+    daRandom.charspec[nwlray] = daRandom.charspec[nwlray];
+    daRandom.charspec[nwlray] = temp;
+    newPswd.push(daRandom.charspec[nwlray]);  
+    }
+    
+  // {
+  //   for (j = 0; j < dadivr; j++) {
+  //   nwlray = [Math.floor(Math.random() * daRandom.charspec.length)];
+  //   newPswd.push(daRandom.charspec[nwlray])};
+  // }
 
-  if (newPswd != quest2) {                                //The block will adjust the password difference due to Math.floor rounding
+console.log(newPswd);                                         //Used to debug (show password array order before shuffling)
+
+  for(i = 0; i < newPswd.length; i++)                         //This randomizes the array from which the password will be selected
+    {
+      rand = Math.floor(Math.random() * newPswd.length)
+      temp = newPswd[i]
+      newPswd[i] = newPswd[rand]
+      newPswd[rand] = temp
+    }                                                         //This is so it does not delete the last criteria selection only in the next step.
+  
+
+console.log(newPswd);                                         //Used to debug
+
+  if (newPswd != quest2) {                                    //The block will adjust the password difference due to Math.floor rounding
     pwdAdjust = newPswd.length - quest2;
     for (k = 0; k < pwdAdjust; k++) {newPswd.pop()};
-    console.log (newPswd.length);                         //These two lines check to see if the user password length and actual password have the same abount of characters
+    console.log (newPswd.length);                             //These two lines check to see if the user password length and actual password have the same abount of characters
     console.log (quest2);
-
-    newPswd.sort(function(a,b){return 0.5 - Math.random()});  // Found code example on https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort_random
     document.getElementById('password').innerHTML = newPswd;
   }
 
-  };
+};
 
-  // genpw();
-  generate.addEventListener('click', genpw);
+// genpw();
+generate.addEventListener('click', genpw);
 
 
 
