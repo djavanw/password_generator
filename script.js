@@ -1,17 +1,17 @@
-var daRandom = {                    //This is the criteria selection initial arrays.
+var daRandom = {                                               //This is the criteria selection initial arrays.
   lowwer: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-  upper: ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'],   //Ommitted I and O.
+  upper: ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'],  //Ommitted I and O.
   numbers: [0,1,2,3,4,5,6,7,8,9],
   charspec: ['!','@','#','$','%','^','/','&','*','?']
 }
 
-var msg = 'Password must be between 8 and 128 characters.';   //** Responses to user wrong selections **/
+var msg = 'Password must be between 8 and 128 characters.';    //** Responses to user wrong selections **/
 var msg1 = 'You must select a number.';
 var msg2 = 'You must select atleast 1 criteria.';
     
 function writePassword() {
                                       
-  var quest1;                                                 //Variables for list of questions to ask the user.
+  var quest1;                                                  //Variables for list of questions to ask the user.
   var quest2;
   var quest3;
   var quest4;
@@ -19,21 +19,19 @@ function writePassword() {
 
   var pick = 0;                                                //This represents count of how many criteria are selected.
   var dadivr = 0;
-  var nwlray;
-  var newPswd = [];
+  var nwlray;                                                  //This is for the loop nmlray and the push into the new array.  It keeps the number within the range of the selected array.
+  var newPswd = [];                                           
   var pwdAdjust;
-  // var k;
-  // var i;
   var rand
-  var temp = [];
-  // var x;                                                       //This is for the loop nmlray and the push into the new array.  It keeps the number within the range of the selected array. 
-  
+  var temp = [];                                               //Empty array needed for randomization
+                                                     
   quest1 = prompt('How many characters in the password?');
-  if ((quest1 <8) || (quest1 >128)) {
+  if ((quest1 < 8) || (quest1 > 128)) { 
     document.getElementById('dialog').innerHTML = msg; return;
   } else if (isNaN(quest1)) {
   document.getElementById('dialog').innerHTML = msg1; return;
   } else {
+    document.getElementById('dialog').innerHTML = '';
     quest1 = quest1;
   }
 
@@ -46,32 +44,32 @@ function writePassword() {
   quest5 = confirm('Include special characters?');
     
   if (
-    (quest2 == false && quest3 == false) &&
-    (quest4 == false && quest5 == false)                      //This validate the user selects atleast one criteria.
+    (quest2 === false && quest3 === false) &&
+    (quest4 === false && quest5 === false)                      //This validates the user selects at least one criteria.
   ) {   
     document.getElementById('dialog').innerHTML = msg2; return;
   }
            
-  if (quest2 ===true) {pick++;};                               //This block gets a criteria selection count
-  if (quest3 ===true) {pick++;}; 
-  if (quest4 ===true) {pick++;};
-  if (quest5 ===true) {pick++;};  
+  if (quest2 === true) {pick++;};                               //This block gets a criteria selection count
+  if (quest3 === true) {pick++;}; 
+  if (quest4 === true) {pick++;};
+  if (quest5 === true) {pick++;};  
   dadivr = Math.ceil(quest1 / pick);
 
-console.log(dadivr);                                //Used to debug
+//console.log(dadivr);                                //Used to debug
   
-  if (quest2 ===true) {                              
-    for(let i = 0; i < daRandom.lowwer.length; i++) 
-    {   
+  if (quest2 === true) {                              
+    for(let i = 0; i < daRandom.lowwer.length; i++) {   
       rand = Math.floor(Math.random() * daRandom.lowwer.length);   //Found a better way to randomize the array  https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array#:~:text=The%20de%2Dfacto%20unbiased%20shuffle,Yates%20(aka%20Knuth)%20Shuffle.&text=function%20shuffle(array)%20%7B%20var,while%20(0%20!%3D%3D
       temp = daRandom.lowwer[i];
       daRandom.lowwer[i] = daRandom.lowwer[rand];
       daRandom.lowwer[rand] = temp;
     }
   }
-
-  console.log(daRandom.lowwer);                     //Used to debug
-  if(quest2 ===true) {
+  
+  //console.log(daRandom.lowwer);                     //Used to debug
+  
+  if(quest2 === true) {
     for(let x = 0; x < dadivr; x++) {
       nwlray = [Math.floor(Math.random() * daRandom.lowwer.length)];  //This must be used because dadivr can be a number higher that the numbers in the array.
       temp = daRandom.lowwer[nwlray];
@@ -81,12 +79,11 @@ console.log(dadivr);                                //Used to debug
     }
   }  
 
-console.log(daRandom.lowwer);                       //Used to debug
-console.log(newPswd);
+//console.log(daRandom.lowwer);                       //Used to debug
+//console.log(newPswd);
   
-  if (quest3 ===true) {
-    for(let i = 0; i < daRandom.upper.length; i++) 
-    {
+  if (quest3 === true) {
+    for(let i = 0; i < daRandom.upper.length; i++) {
       rand = Math.floor(Math.random() * daRandom.upper.length)
       temp = daRandom.upper[i]
       daRandom.upper[i] = daRandom.upper[rand]
@@ -94,7 +91,7 @@ console.log(newPswd);
     }
   }
 
-  if(quest3 ===true) {
+  if(quest3 === true) {
     for(let x = 0; x < dadivr; x++) {
     nwlray = [Math.floor(Math.random() * daRandom.upper.length)];   //This will only select a random number within the array.
     temp = daRandom.upper[nwlray];
@@ -104,9 +101,8 @@ console.log(newPswd);
     }
   }  
   
-  if (quest4 ===true) {
-    for(let i = 0; i < daRandom.numbers.length; i++) 
-    {
+  if (quest4 === true) {
+    for(let i = 0; i < daRandom.numbers.length; i++) {
       rand = Math.floor(Math.random() * daRandom.numbers.length)
       temp = daRandom.numbers[i]
       daRandom.numbers[i] = daRandom.numbers[rand]
@@ -114,7 +110,7 @@ console.log(newPswd);
     }
   }
 
-  if(quest4 ===true) {
+  if(quest4 === true) {
     for(let x = 0; x < dadivr; x++) {
     nwlray = [Math.floor(Math.random() * daRandom.numbers.length)];   //This will only select a random number within the array.
     temp = daRandom.numbers[nwlray];
@@ -124,9 +120,8 @@ console.log(newPswd);
     }
    } 
   
-  if(quest5 ===true) {
-    for(let i = 0; i < daRandom.charspec.length; i++) 
-    {
+  if(quest5 === true) {
+    for(let i = 0; i < daRandom.charspec.length; i++) {
       rand = Math.floor(Math.random() * daRandom.charspec.length)
       temp = daRandom.charspec[i]
       daRandom.charspec[i] = daRandom.charspec[rand]
@@ -134,7 +129,7 @@ console.log(newPswd);
     }
   }
 
-  if(quest5===true) {
+  if(quest5 === true) {
     for(let x = 0; x < dadivr; x++) {
     nwlray = [Math.floor(Math.random() * daRandom.charspec.length)];    //This will only select a random number within the array.
     temp = daRandom.charspec[nwlray];
@@ -144,19 +139,18 @@ console.log(newPswd);
     }
   }
 
-console.log(newPswd);                                         //Used to debug (show password array order before shuffling)
+//console.log(newPswd);                                         //Used to debug (show password array order before shuffling)
 
-  for(let i = 0; i < newPswd.length; i++)                         //This randomizes the array from which the password will be selected
-    {
+  for(let i = 0; i < newPswd.length; i++) {                       //This randomizes the array from which the password will be selected
       rand = Math.floor(Math.random() * newPswd.length)
       temp = newPswd[i]
       newPswd[i] = newPswd[rand]
       newPswd[rand] = temp
     }                                                         //This is so it does not delete the last criteria selection only in the next step.
   
-console.log(newPswd);                                         //Used to debug
+//console.log(newPswd);                                         //Used to debug
 
-  if (newPswd != quest1) {                                    //The block will adjust the password difference due to Math.floor rounding
+  if (newPswd !== quest1) {                                    //The block will adjust the password difference due to Math.floor rounding
     pwdAdjust = newPswd.length - quest1;
     for (let k = 0; k < pwdAdjust; k++) {newPswd.pop()};
     console.log (newPswd.length);                             //These two lines check to see if the user password length and actual password have the same abount of characters
@@ -165,7 +159,6 @@ console.log(newPswd);                                         //Used to debug
   }
 };
 
-// genpw();
 generate.addEventListener('click', writePassword);
 
 /****************This is the starter code ****************** 
