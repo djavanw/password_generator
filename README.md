@@ -9,7 +9,7 @@ This application is structured with HTML and styled with CSS to present a user w
 
 ![Dialog to user for incorrect input](./assets/images/password_gen_incorrect_user_input.jpeg)
 
-![User input prompt](./assets/images/password_gen_user_input1.png)
+![User input prompt](./assets/images/password_gen_user_input.png)
 
 ![Generating new password](./assets/images/password_gen_75_characters.jpeg)
 
