@@ -98,8 +98,9 @@ button[disabled] {
 }
 
 #dialog {
-  color: white;
+  color: red;
   background-color: black;
+  font-size: 1.3rem;
 }
 
 #password {
