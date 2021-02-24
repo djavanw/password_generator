@@ -1,5 +1,5 @@
 var daRandom = {                                               //This is the criteria selection initial arrays.
-  lowwer: ['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'], //Omitted l
+  lower: ['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'], //Omitted l
   upper: ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'],  //Omitted I and O.
   numbers: [0,1,2,3,4,5,6,7,8,9],
   charspec: ['!','@','#','$','%','^','/','&','*','?']
@@ -57,21 +57,21 @@ function writePassword() {
   dadivr = Math.ceil(quest1 / pick);
 
   if (quest2 === true) {                              
-    for(let i = 0; i < daRandom.lowwer.length; i++) {   
-      rand = Math.floor(Math.random() * daRandom.lowwer.length);   //Found a better way to randomize the array  https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array#:~:text=The%20de%2Dfacto%20unbiased%20shuffle,Yates%20(aka%20Knuth)%20Shuffle.&text=function%20shuffle(array)%20%7B%20var,while%20(0%20!%3D%3D
-      temp = daRandom.lowwer[i];
-      daRandom.lowwer[i] = daRandom.lowwer[rand];
-      daRandom.lowwer[rand] = temp;
+    for(let i = 0; i < daRandom.lower.length; i++) {   
+      rand = Math.floor(Math.random() * daRandom.lower.length);   //Found a better way to randomize the array  https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array#:~:text=The%20de%2Dfacto%20unbiased%20shuffle,Yates%20(aka%20Knuth)%20Shuffle.&text=function%20shuffle(array)%20%7B%20var,while%20(0%20!%3D%3D
+      temp = daRandom.lower[i];
+      daRandom.lower[i] = daRandom.lower[rand];
+      daRandom.lower[rand] = temp;
     }
   }
   
   if(quest2 === true) {
     for(let x = 0; x < dadivr; x++) {
-      nwlray = [Math.floor(Math.random() * daRandom.lowwer.length)];  //This must be used because dadivr can be a number higher that the numbers in the array.
-      temp = daRandom.lowwer[nwlray];
-      daRandom.lowwer[nwlray] = daRandom.lowwer[nwlray];
-      daRandom.lowwer[nwlray] = temp;
-      newPswd.push(daRandom.lowwer[nwlray]);  
+      nwlray = [Math.floor(Math.random() * daRandom.lower.length)];  //This must be used because dadivr can be a number higher that the numbers in the array.
+      temp = daRandom.lower[nwlray];
+      daRandom.lower[nwlray] = daRandom.lower[nwlray];
+      daRandom.lower[nwlray] = temp;
+      newPswd.push(daRandom.lower[nwlray]);  
     }
   }  
   
