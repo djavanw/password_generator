@@ -1,13 +1,13 @@
 var daRandom = {                                               //This is the criteria selection initial arrays.
-  lowwer: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-  upper: ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'],  //Ommitted I and O.
+  lowwer: ['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'], //Omitted l
+  upper: ['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z'],  //Omitted I and O.
   numbers: [0,1,2,3,4,5,6,7,8,9],
   charspec: ['!','@','#','$','%','^','/','&','*','?']
 }
 
 var msg = 'Password must be between 8 and 128 characters.';    //** Responses to user wrong selections **/
 var msg1 = 'You must select a number.';
-var msg2 = 'You must select atleast 1 criteria.';
+var msg2 = 'You must select at least 1 option.';
     
 function writePassword() {
                                       
@@ -25,7 +25,7 @@ function writePassword() {
   var rand
   var temp = [];                                               //Empty array needed for randomization
                                                      
-  quest1 = prompt('How many characters in the password?');
+  quest1 = prompt('How many characters in the password? (Select 8 - 128)');
   if ((quest1 < 8) || (quest1 > 128)) { 
     document.getElementById('dialog').innerHTML = msg; return;
   } else if (isNaN(quest1)) {
@@ -56,8 +56,6 @@ function writePassword() {
   if (quest5 === true) {pick++;};  
   dadivr = Math.ceil(quest1 / pick);
 
-//console.log(dadivr);                                //Used to debug
-  
   if (quest2 === true) {                              
     for(let i = 0; i < daRandom.lowwer.length; i++) {   
       rand = Math.floor(Math.random() * daRandom.lowwer.length);   //Found a better way to randomize the array  https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array#:~:text=The%20de%2Dfacto%20unbiased%20shuffle,Yates%20(aka%20Knuth)%20Shuffle.&text=function%20shuffle(array)%20%7B%20var,while%20(0%20!%3D%3D
@@ -66,8 +64,6 @@ function writePassword() {
       daRandom.lowwer[rand] = temp;
     }
   }
-  
-  //console.log(daRandom.lowwer);                     //Used to debug
   
   if(quest2 === true) {
     for(let x = 0; x < dadivr; x++) {
@@ -78,9 +74,6 @@ function writePassword() {
       newPswd.push(daRandom.lowwer[nwlray]);  
     }
   }  
-
-//console.log(daRandom.lowwer);                       //Used to debug
-//console.log(newPswd);
   
   if (quest3 === true) {
     for(let i = 0; i < daRandom.upper.length; i++) {
@@ -139,40 +132,21 @@ function writePassword() {
     }
   }
 
-//console.log(newPswd);                                         //Used to debug (show password array order before shuffling)
-
   for(let i = 0; i < newPswd.length; i++) {                       //This randomizes the array from which the password will be selected
       rand = Math.floor(Math.random() * newPswd.length)
       temp = newPswd[i]
       newPswd[i] = newPswd[rand]
       newPswd[rand] = temp
-    }                                                         //This is so it does not delete the last criteria selection only in the next step.
+    }                                                           //This is so it does not delete the last criteria selection only in the next step.
   
-//console.log(newPswd);                                         //Used to debug
-
-  if (newPswd !== quest1) {                                    //The block will adjust the password difference due to Math.floor rounding
+  if (newPswd !== quest1) {                                     //The block will adjust the password difference due to Math.floor rounding
     pwdAdjust = newPswd.length - quest1;
     for (let k = 0; k < pwdAdjust; k++) {newPswd.pop()};
-    console.log (newPswd.length);                             //These two lines check to see if the user password length and actual password have the same abount of characters
+    console.log (newPswd.length);                               //These two lines check to see if the user password length and actual password have the same abount of characters
     console.log (quest1);
-    document.getElementById('password').innerHTML = newPswd;
+    var genPswd = [newPswd.join('')];                           //Removes the unwanted commas in the password.
+    document.getElementById('password').innerHTML = genPswd;
   }
 };
 
 generate.addEventListener('click', writePassword);
-
-/****************This is the starter code ****************** 
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-   var password = generatePassword();
-   var passwordText = document.querySelector("#password");
-
-   passwordText.value = password;
- }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-*********** This is the starter code*************************/
